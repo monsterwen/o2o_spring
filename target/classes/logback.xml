@@ -25,7 +25,7 @@
 			<!-- 文件最大保存历史数量 -->
 			<maxHistory>${log.maxHistory}</maxHistory>
 		</rollingPolicy>
-		<encoder>
+		<encoder> 
 			<pattern>${log.pattern}</pattern>
 		</encoder>
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
