@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,16 +15,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.imooc.o2o.entity.Area;
 import com.imooc.o2o.service.AreaService;
 
+import ch.qos.logback.classic.Logger;
+
 @Controller
 @RequestMapping("/superadmin")
 public class AreaController {
+	Logger logger = (Logger) LoggerFactory.getLogger(AreaController.class);
 	@Autowired
 	private AreaService areaService;
 	@RequestMapping(value="/listarea", method = RequestMethod.GET)
 	// response body让方法把output以json的格式传给前段
 	@ResponseBody
 	private Map<String,Object> listArea(){
-		
+		logger.info("===start===");
+		long startTime= System.currentTimeMillis();
 		//map用来存放返回值
 		Map<String,Object> modelMap=new HashMap<String,Object>();
 		List<Area> list = new ArrayList<Area>();
@@ -37,6 +42,12 @@ public class AreaController {
 			modelMap.put("errMsg", e.toString());
 			
 		}
+		logger.error("test error!");
+		long endTime= System.currentTimeMillis();
+
+		logger.debug("costTime:[{}ms]",endTime-startTime);
+		logger.info("===end===");
+
 		return modelMap; 
 		
 	}

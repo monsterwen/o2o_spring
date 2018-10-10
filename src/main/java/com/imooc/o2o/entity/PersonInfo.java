@@ -16,8 +16,8 @@ public class PersonInfo {
 	public Long getUserId() {
 		return userId;
 	}
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setUserId(long i) {
+		this.userId = i;
 	}
 	public String getName() {
 		return name;
